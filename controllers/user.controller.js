@@ -402,7 +402,7 @@ export const exchangeBenefits = async (req, res) => {
       const mailOptions = {
         from: 'ggwallettest@gmail.com',
         to: userFound.email,
-        subject: 'Codigo de verificacion',
+        subject: 'GGWallet- Canjeo de codigo por beneficio',
         text: 'Felicidades por canjear ' + benefit.name + ' por ' + benefit.price + ' creditos, su codigo es el siguiente ' + Math.floor(Math.random() * 10000001)
       };
       transporter.sendMail(mailOptions, function (err, info) {
