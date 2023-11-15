@@ -259,17 +259,14 @@ export const addNewCard = async (req, res) => {
     const { cardNumber, goodTill, secretCode, dni } = req.body;
     const userFound = await User.findOne({ dni: dni })
     if (!userFound) return res.status(400).json({ message: 'El dni ingresado no esta registrado' });
-    const listCardRegistered = await Card.find({ dni: dni })
-    for (const key in listCardRegistered) {
-      if (await bcrypt.compare(cardNumber, listCardRegistered[key].cardNumber)) {
-        return res.status(400).json({ message: 'Tarjeta registrada' });
-      }
+    const listCardRegistered = await Card.find({ cardNumber: cardNumber })
+    if(listCardRegistered.length > 0) {
+      return res.status(400).json({ message: 'La tarjeta ya esta registrada' });
     }
-    const cardNumberEncrypt = await bcrypt.hash(cardNumber, 10);
     const secretCodeEncrypt = await bcrypt.hash(secretCode, 10);
     const goodTillSaved= goodTill.slice(-2)+goodTill.substring(0,2)
     const newCard = new Card({
-      cardNumber: cardNumberEncrypt,
+      cardNumber: cardNumber,
       goodTill: goodTillSaved,
       secretCode: secretCodeEncrypt,
       lastFourNumbers: cardNumber.slice(-4),
@@ -328,9 +325,8 @@ export const addsCredit = async (req, res) => {
     let result = false;
     for (let index = 0; index < cardFound.length; index++) {
       const element = cardFound[index];
-      const cardNumberLegit = await bcrypt.compare(cardNumber, element.cardNumber);
       const secureCodeLegit = await bcrypt.compare(secretCode, element.secretCode);
-      if (cardNumberLegit && secureCodeLegit && goodTill === element.goodTill) {
+      if (cardNumber === element.cardNumber && secureCodeLegit && goodTill === element.goodTill) {
         const totalUpdated = userFound.credits + totalAmmount * 0.05;
         await User.findByIdAndUpdate(userFound._id, { credits: totalUpdated });
         result = true;
