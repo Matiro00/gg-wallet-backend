@@ -116,7 +116,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"cardNumber\": \"4824690001939952\", \"goodTill\": \"2110\", \"dni\": 13541351, \"totalAmmount\": 1000, \"secretCode\": \"123\"}",
+							"raw": "{\"cardNumber\": \"456326226643\", \"goodTill\": \"2110\", \"dni\": 13541351, \"totalAmmount\": 1000, \"secretCode\": \"123\"}",
 							"options": {
 								"raw": {
 									"language": "json"
