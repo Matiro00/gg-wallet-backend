@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "a0a51ef6-9bc7-452c-b6b9-1f9b3969caae",
+		"name": "GG-Wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21377950"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"asd123\",\r\n    \"password\": \"asd123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/session",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Matiro123\",\r\n    \"email\": \"matias301020000@gmail.com\",\r\n    \"password\": \"contra1234\",\r\n    \"dni\": 13412221\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/session",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userIDReceiver\": \"GG-Matiro1#8443\",\r\n    \"userIDSender\": \"GG-Matiro#8517\",\r\n    \"credit\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/credit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"credit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction simulation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cardNumber\": \"4824690001939952\", \"goodTill\": \"2110\", \"dni\": 13541351, \"totalAmmount\": 1000, \"secretCode\": \"123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Code verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 13412221,\r\n    \"code\": 2455\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/code",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend Code",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 13412221\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/code",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"code"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Creditcard",
+			"item": [
+				{
+					"name": "AddCard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardNumber\": \"4824690001939952\",\r\n    \"goodTill\": \"2110\",\r\n    \"secretCode\": \"123\",\r\n    \"dni\": 13541351\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/card",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/card?dni=13541351",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"card"
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "13541351"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Benefits",
+			"item": [
+				{
+					"name": "Show Benefits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/benefit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"benefit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Benefits Redeemed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 13541351\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/benefitRedeemed?dni=13541351",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"benefitRedeemed"
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "13541351"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exchange Benefit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 13412221,\r\n    \"idBenefit\": \"6550722287dae4b91c40f95e\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/benefit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"benefit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:4000",
+			"type": "string"
+		}
+	]
+}
